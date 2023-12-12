@@ -27,7 +27,7 @@ emotions_data = []
 
 # -------------------------------- SET THE VIDEO SOURCE -------------------------------- #
 # start the webcam feed
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
 
 # pass here your video path
 # cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/anger_closeUP.mp4")
