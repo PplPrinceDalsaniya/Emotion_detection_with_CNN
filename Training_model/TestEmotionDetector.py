@@ -10,12 +10,12 @@ emotion_dict = {0: "Angry", 1: "Fear", 2: "Happy", 3: "Neutral", 4: "Sad"}
 
 # -------------------------------- LOADING EMOTION MODEL -------------------------------- #
 # load json and create model
-json_file = open('model/emotion_model_20.json', 'r')
+json_file = open('model/emotion_model_40.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 emotion_model = model_from_json(loaded_model_json)
 # load weights into new model
-emotion_model.load_weights("model/emotion_model_20.h5")
+emotion_model.load_weights("model/emotion_model_40.h5")
 print("Loaded model from disk")
 
 # -------------------------------- GLOBAL VARIABLES -------------------------------- #
@@ -31,9 +31,9 @@ emotions_data = []
 
 # pass here your video path
 # cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/anger_closeUP.mp4")
-cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/anger_girl.mp4")
+# cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/anger_girl.mp4")
 # cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/Angry_boy.mp4")
-# cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/FearAndSurprice.mp4")
+cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/FearAndSurprice.mp4")
 # cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/Happy_girl.mp4")
 # cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/sad_uncle.mp4")
 # cap = cv2.VideoCapture("/Users/princedalsaniyappl/Downloads/Emotion Detection Downloads/Test_videos/test_video_1.mov")
