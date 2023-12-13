@@ -1,3 +1,4 @@
+import os
 import time
 from interface import VideoInfo
 import validation as Validations
@@ -141,6 +142,14 @@ def generate_final_result_object():
   }
 
 
+def delete_video(video_location):
+  try:
+    os.remove(video_location)
+    print(f"Video file '{video_location}' deleted successfully.")
+  except OSError as e:
+    print(f"Error deleting video file: {e}")
+
+
 def main(body: VideoInfo):
   global video_link, video_type, dominant_emotion_summary, emotion_statistics_summary
 
@@ -171,8 +180,8 @@ def main(body: VideoInfo):
 
     # -------------------------------- SET THE VIDEO SOURCE -------------------------------- #
     Validations.check_file_location(video_location)
-    # cap = cv2.VideoCapture(video_location)
     cap = cv2.VideoCapture(video_location)
+    # cap = cv2.VideoCapture("Happy_girl.mp4")
     
     # -------------------------------- PROCESS AND DETECT EMOTION IN VIDEO -------------------------------- #
     start_time = time.time()
@@ -190,6 +199,9 @@ def main(body: VideoInfo):
     # -------------------------------- CALCULATE SUMMARY INFORMATION -------------------------------- #
     summary = calculate_video_summary()
     dominant_emotion_summary, emotion_statistics_summary = summary.values()
+
+    # -------------------------------- DELETE THE VIDEO AFTER PROCESSING -------------------------------- #
+    delete_video(video_location)
 
     # -------------------------------- CREATE THE FINAL RESULT -------------------------------- #
     # json_result = json.dumps(generate_final_result_object(), indent=2)
